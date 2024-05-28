@@ -89,14 +89,15 @@
               >View</a>
               <br>
               <a
+                  v-if="hasRole('CUSTOMER')"
                   href="javascript:;"
                   class="text-secondary font-weight-bold text-xs"
                   data-toggle="tooltip"
                   data-original-title="Edit user"
                   @click.stop="pushOtherPage(item)">
               Apply</a>
-              <br>
               <a
+                  v-if="hasRole('ADMIN')"
                   href="javascript:;"
                   class="text-secondary font-weight-bold text-xs"
                   data-toggle="tooltip"
@@ -175,6 +176,15 @@ export default {
       if ((await result).status == 200) {
         this.$router.push({name: 'PropertiesList'})
       }
+    }, hasRole(role) {
+      let userRole = null;
+      if (localStorage.getItem('role') != null) {
+        userRole = localStorage.getItem('role').replaceAll("\"", "").trim();
+        return userRole === role;
+      } else {
+        return 'CUSTOMER' === role
+      }
+
     },
 
     pushOtherPage(item) {

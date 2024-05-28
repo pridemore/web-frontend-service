@@ -20,14 +20,23 @@
     <div class="card-body">
       <form role="form" @submit.prevent="submitData" class="text-start">
         <label>Property Type</label>
-        <input
-            class="form-control"
-            id="propertyType"
-            type="text"
-            v-model="propertyType"
-            placeholder="Property Type"
-            name="propertyType"
-        />
+        <select class="form-control" v-model="propertyType" id="propertyType">
+          <option disabled value="">Please Select Property Type</option>
+          <option>HOUSE</option>
+          <option>LAND</option>
+          <option>COMMERCIAL</option>
+          <option>FLAT</option>
+          <option>APARTMENT</option>
+          <option>ROOM</option>
+        </select>
+<!--        <input-->
+<!--            class="form-control"-->
+<!--            id="propertyType"-->
+<!--            type="text"-->
+<!--            v-model="propertyType"-->
+<!--            placeholder="Property Type"-->
+<!--            name="propertyType"-->
+<!--        />-->
         <label>Address</label>
         <input
             class="form-control"

@@ -152,7 +152,13 @@ export default {
         localStorage.setItem("user-info", JSON.stringify((await result).data.result.accessToken))
         localStorage.setItem("user-id", JSON.stringify((await result).data.result.userId))
         localStorage.setItem("customer-id", JSON.stringify((await result).data.result.customerId))
-        this.$router.push({name: 'Dashboard'})
+        localStorage.setItem("role", JSON.stringify((await result).data.result.role))
+        if(localStorage.getItem("customer-id")!=0){
+          this.$router.push({name: 'ApplicationsList'})
+        }else{
+          this.$router.push({name: 'Dashboard'})
+        }
+
       }
     }
 
