@@ -4,7 +4,7 @@
       <div class="col-lg-8">
         <div class="row mt-4">
           <div class="col-md-12 mb-4">
-            <AddPropertyCard />
+            <AddApplicationCard />
           </div>
         </div>
       </div>
@@ -13,16 +13,16 @@
 
   </div>
 </template>
+
 <script>
 import setTooltip from "@/assets/js/tooltip.js";
-import AddPropertyCard from "./components/AddPropertyCard.vue";
+import AddApplicationCard from "@/views/components/AddApplicationCard.vue";
+
 export default {
-  name: "Properties",
-  components: {
-    AddPropertyCard,
-  },
+  name: "Application",
+  components: {AddApplicationCard},
   mounted() {
     setTooltip();
   },
-};
+}
 </script>

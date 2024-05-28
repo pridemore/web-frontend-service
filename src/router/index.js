@@ -9,6 +9,7 @@ import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
 import Properties from "@/views/Properties.vue"
 import PropertiesList from "@/views/PropertiesList.vue"
+import Application from "@/views/Application.vue"
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/PropertiesList",
     name: "PropertiesList",
     component: PropertiesList,
+  },
+  {
+    path: "/Application/:propertyId",
+    name: "Application",
+    component: Application,
   },
   {
     path: "/tables",

@@ -5,7 +5,9 @@
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
-        <table class="table align-items-center mb-0">
+        <table class="table align-items-center mb-0"
+               @click:row="(item) => clickRow(item.propertyId)"
+        >
           <thead>
           <tr>
             <th
@@ -91,15 +93,15 @@
                   class="text-secondary font-weight-bold text-xs"
                   data-toggle="tooltip"
                   data-original-title="Edit user"
-              >Apply</a>
+                  @click.stop="pushOtherPage(item)">
+              Apply</a>
               <br>
               <a
                   href="javascript:;"
                   class="text-secondary font-weight-bold text-xs"
                   data-toggle="tooltip"
                   data-original-title="Edit user"
-              >Edit</a
-              >
+              >Edit</a>
             </td>
           </tr>
           </tbody>
@@ -173,7 +175,12 @@ export default {
       if ((await result).status == 200) {
         this.$router.push({name: 'PropertiesList'})
       }
-    }
+    },
+
+    pushOtherPage(item) {
+      console.log('click in Id column',item.propertyId);
+      this.$router.push({ name: 'Application',params:{ propertyId: item.propertyId }});
+    },
   }
 };
 </script>

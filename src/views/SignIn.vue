@@ -150,6 +150,8 @@ export default {
       });
       if ((await result).status == 200) {
         localStorage.setItem("user-info", JSON.stringify((await result).data.result.accessToken))
+        localStorage.setItem("user-id", JSON.stringify((await result).data.result.userId))
+        localStorage.setItem("customer-id", JSON.stringify((await result).data.result.customerId))
         this.$router.push({name: 'Dashboard'})
       }
     }

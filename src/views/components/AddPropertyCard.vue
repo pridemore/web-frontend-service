@@ -90,7 +90,7 @@ import SoftButton from "@/components/SoftButton.vue";
 import axios from "axios";
 
 export default {
-  name: "PaymentMethodsCard",
+  name: "AddPropertyCard",
   components: {
     SoftButton,
   },
