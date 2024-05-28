@@ -33,7 +33,14 @@
         </sidenav-collapse>
       </li>
       <li class="nav-item">
-        <sidenav-collapse navText="Logout" :to="{ name: 'Sign Up' }">
+        <sidenav-collapse navText="ApplicationList" :to="{ name: 'ApplicationsList' }">
+          <template #icon>
+            <credit-card />
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse navText="Logout" @click="logout" :to="{ name: 'Sign In' }">
           <template #icon>
             <spaceship />
           </template>
@@ -162,6 +169,12 @@ export default {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
     },
+    logout() {
+      localStorage.clear();
+      // Additional actions for logout:
+      this.$router.push('/sign-in'); // Redirect to login route
+      this.$emit('logout-event');  // Emit a custom event for logout handling
+    }
   },
 };
 </script>

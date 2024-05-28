@@ -1,12 +1,12 @@
 <template>
   <div class="card mb-4">
     <div class="card-header pb-0">
-      <h6>Properties List</h6>
+      <h6>Applications List</h6>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
         <table class="table align-items-center mb-0"
-               @click:row="(item) => clickRow(item.propertyId)"
+               @click:row="(item) => clickRow(item.applicationId)"
         >
           <thead>
           <tr>
@@ -23,18 +23,23 @@
             <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
             >
-              Rental Amount
+              Deposited Amount
             </th>
             <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
             >
-              Status
+              Start Date
             </th>
 
             <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
             >
-              Date Created
+              End Date
+            </th>
+            <th
+                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+            >
+              Status
             </th>
             <th class="text-secondary opacity-7">Action</th>
           </tr>
@@ -67,34 +72,28 @@
               <p class="text-xs text-secondary mb-0">{{ item.description }}</p>
             </td>
             <td class="align-middle text-center">
-              <p class="text-xs text-secondary mb-0" >${{ item.rentalAmount }}</p>
+              <p class="text-xs text-secondary mb-0" >${{ item.depositPrice }}</p>
+            </td>
+            <td class="align-middle text-center">
+              <p class="text-xs text-secondary mb-0" >{{ item.startDate }}</p>
+            </td>
+            <td class="align-middle text-center">
+              <p class="text-xs text-secondary mb-0" >{{ item.endDate }}</p>
             </td>
             <td class="align-middle text-center text-sm">
               <soft-badge color="success" variant="gradient" size="sm"
-              >{{ item.propertyStatus }}
+              >{{ item.applicationStatus }}
               </soft-badge
               >
             </td>
-            <td class="align-middle text-center">
-                <span class="text-secondary text-xs font-weight-bold"
-                >{{ item.dateCreated }}</span
-                >
-            </td>
-            <td class="align-middle text-center">
+
+            <td class="align-middle text-center" >
               <a
                   href="javascript:;"
                   class="text-secondary font-weight-bold text-xs"
                   data-toggle="tooltip"
                   data-original-title="Edit user"
               >View</a>
-              <br>
-              <a
-                  href="javascript:;"
-                  class="text-secondary font-weight-bold text-xs"
-                  data-toggle="tooltip"
-                  data-original-title="Edit user"
-                  @click.stop="pushOtherPage(item)">
-              Apply</a>
               <br>
               <a
                   href="javascript:;"
@@ -123,7 +122,7 @@ import img6 from "../../assets/img/team-4.jpg";
 import axios from "axios";
 
 export default {
-  name: "authors-table",
+  name: "applications-table",
   data() {
     return {
       img1,
@@ -133,18 +132,20 @@ export default {
       img5,
       img6,
       items: [{
-        "propertyId": '',
-        "propertyType": '',
-        "address": '',
-        "size": '',
-        "description": '',
+        "startDate": "",
+        "endDate": "",
+        "depositPrice": '',
+        "customerId": '',
+        "customerName": "",
+        "customerSurname": "",
+        "customerEmail": "",
+        "propertyType": "",
+        "address": "",
+        "size": "",
+        "description": "",
         "rentalAmount": '',
-        "hasApplication": '',
-        "propertyStatus": '',
-        "propertyImage": '',
-        "status": '',
-        "dateCreated": '',
-        "lastUpdated": ''
+        "propertyId": '',
+        "applicationStatus": ""
       }]
     };
   },
@@ -153,11 +154,11 @@ export default {
     SoftBadge,
   },
   mounted() {
-    this.getPropertiesList();
+    this.getApplicationsList();
   },
   methods: {
 
-    async getPropertiesList() {
+    async getApplicationsList() {
 
       const token = localStorage.getItem('user-info').replaceAll("\"", "").trim();
       console.log("Token", token);
@@ -165,7 +166,7 @@ export default {
         Authorization: `Bearer ${token}`,
       }
 
-      let result = axios.get("http://localhost:8090/api/properties/all",
+      let result = axios.get("http://localhost:8090/api/applications/all",
           {headers}
       ).then(response => {
         const apiData = response.data.result;
@@ -173,14 +174,10 @@ export default {
         console.log(apiData.data.result)
       });
       if ((await result).status == 200) {
-        this.$router.push({name: 'PropertiesList'})
+        this.$router.push({name: 'ApplicationsList'})
       }
     },
 
-    pushOtherPage(item) {
-      console.log('click in Id column',item.propertyId);
-      this.$router.push({ name: 'Application',params:{ propertyId: item.propertyId }});
-    },
   }
 };
 </script>

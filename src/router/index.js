@@ -10,12 +10,13 @@ import SignUp from "@/views/SignUp.vue";
 import Properties from "@/views/Properties.vue"
 import PropertiesList from "@/views/PropertiesList.vue"
 import Application from "@/views/Application.vue"
+import ApplicationsList from "@/views/ApplicationsList.vue";
 
 const routes = [
   {
     path: "/",
     name: "/",
-    redirect: "/dashboard",
+    redirect: "/sign-in",
   },
   {
     path: "/dashboard",
@@ -36,6 +37,11 @@ const routes = [
     path: "/Application/:propertyId",
     name: "Application",
     component: Application,
+  },
+  {
+    path: "/ApplicationsList",
+    name: "ApplicationsList",
+    component: ApplicationsList,
   },
   {
     path: "/tables",

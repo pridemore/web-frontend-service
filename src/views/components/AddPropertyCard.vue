@@ -6,9 +6,13 @@
           <h6 class="mb-0">Properties</h6>
         </div>
         <div class="col-6 text-end">
+          <router-link
+              :to="{ name: 'PropertiesList' }"
+          >
           <soft-button color="dark" variant="gradient">
             View Properties
           </soft-button>
+          </router-link>
         </div>
       </div>
     </div>
