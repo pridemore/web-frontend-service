@@ -69,15 +69,12 @@
                 />
               </div>
               <div class="mb-3">
-                <input
-                    class="form-control"
-                    id="gender"
-                    type="text"
-                    v-model="form.gender"
-                    placeholder="Gender"
-                    aria-label="Gender"
-                />
-              </div>
+                <select class="form-control" v-model="form.gender" id="gender">
+                  <option disabled value="">Please Gender</option>
+                  <option>MALE</option>
+                  <option>FEMALE</option>
+                </select>
+                </div>
               <div class="mb-3">
                 <input
                     class="form-control"
@@ -126,16 +123,6 @@
                     v-model="form.password"
                     placeholder="Password"
                     aria-label="Password"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                    class="form-control"
-                    id="role"
-                    type="text"
-                    v-model="form.role"
-                    placeholder="Role"
-                    aria-label="Role"
                 />
               </div>
 
@@ -205,7 +192,7 @@ export default {
              email: '',
              address: '',
              phoneNumber: '',
-             role: ''
+             role: 'CUSTOMER'
            }
     }
   },
