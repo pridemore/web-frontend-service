@@ -40,6 +40,13 @@
         </sidenav-collapse>
       </li>
       <li class="nav-item">
+        <sidenav-collapse navText="HomeProperties" :to="{ name: 'HomeProperties' }">
+          <template #icon>
+            <credit-card />
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
         <sidenav-collapse navText="Logout" @click="logout" :to="{ name: 'Sign In' }">
           <template #icon>
             <spaceship />

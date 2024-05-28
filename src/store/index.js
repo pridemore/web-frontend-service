@@ -55,6 +55,9 @@ export default createStore({
       state.showSidenav = !state.showSidenav;
       state.showFooter = !state.showFooter;
     },
+    toggleSidenavDisplay(state) {
+      state.showSidenav = !state.showSidenav;
+    },
     toggleHideConfig(state) {
       state.hideConfigButton = !state.hideConfigButton;
     },

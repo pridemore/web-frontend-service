@@ -11,12 +11,18 @@ import Properties from "@/views/Properties.vue"
 import PropertiesList from "@/views/PropertiesList.vue"
 import Application from "@/views/Application.vue"
 import ApplicationsList from "@/views/ApplicationsList.vue";
+import HomeProperties from "@/views/HomeProperties.vue"
 
 const routes = [
   {
     path: "/",
     name: "/",
     redirect: "/sign-in",
+  },
+  {
+    path: "/HomeProperties",
+    name: "HomeProperties",
+    component: HomeProperties
   },
   {
     path: "/dashboard",
